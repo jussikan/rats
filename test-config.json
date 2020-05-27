@@ -1,0 +1,176 @@
+{
+    "environments": {
+        "sortBy": "asc",
+        "data": [
+            {
+                "id": "alpha",
+                "title": "Alpha",
+                "location": "http://localhost:10000"
+            },
+            {
+                "id": "beta",
+                "title": "Beta",
+                "location": "http://localhost:10001"
+            }
+        ]
+    },
+    "collectionTypes": [
+        {
+            "name": "service"
+        },
+        {
+            "name": "key"
+        }
+    ],
+    "collections": {
+        "data": [
+            {
+                "id": "services",
+                "type": "service",
+                "title": "Services",
+                "sortBy": "asc",
+                "data": [
+                    {
+                        "originEnvironmentId": "alpha",
+                        "bindToDomain": true,
+                        "domainId": "moneyTracker",
+                        "domainName": "moneyTracker",
+                        "location": "1.2.3.4:4000",
+                        "filename": "dataa",
+                        "cliParamMap": {
+                            "domainId": "id",
+                            "domainName": "name",
+                            "location": "value",
+                            "filename": "filename"
+                        }
+                    },
+                    {
+                        "originEnvironmentId": "beta",
+                        "bindToDomain": true,
+                        "domainId": "moneyTracker",
+                        "domainName": "moneyTracker",
+                        "location": "6.5.4.3:50000",
+                        "filename": "dataa",
+                        "cliParamMap": {
+                            "domainId": "id",
+                            "domainName": "name",
+                            "location": "value",
+                            "filename": "filename"
+                        }
+                    },
+                    {
+                        "originEnvironmentId": "alpha",
+                        "bindToDomain": true,
+                        "domainId": "spamFinder",
+                        "domainName": "spamFinder",
+                        "location": "1.2.3.4:3569",
+                        "filename": "dataa",
+                        "cliParamMap": {
+                            "domainId": "id",
+                            "domainName": "name",
+                            "location": "value",
+                            "filename": "filename"
+                        }
+                    },
+                    {
+                        "originEnvironmentId": "beta",
+                        "bindToDomain": true,
+                        "domainId": "spamFinder",
+                        "domainName": "spamFinder",
+                        "location": "6.5.4.3:13569",
+                        "filename": "dataa",
+                        "cliParamMap": {
+                            "domainId": "id",
+                            "domainName": "name",
+                            "location": "value",
+                            "filename": "filename"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "keys",
+                "type": "key",
+                "title": "Keys",
+                "sortBy": "asc",
+                "data": [
+                    {
+                        "originEnvironmentId": "alpha",
+                        "key": "https_requests_only",
+                        "value": false,
+                        "filename": "dataa",
+                        "cliParamMap": {
+                            "key": "key",
+                            "value": "value",
+                            "filename": "filename"
+                        }
+                    },
+                    {
+                        "originEnvironmentId": "alpha",
+                        "key": "brand",
+                        "value": "ALL",
+                        "filename": "dataa",
+                        "cliParamMap": {
+                            "key": "key",
+                            "value": "value",
+                            "filename": "filename"
+                        }
+                    },
+                    {
+                        "originEnvironmentId": "beta",
+                        "key": "https_requests_only",
+                        "value": true,
+                        "filename": "dataa",
+                        "cliParamMap": {
+                            "key": "key",
+                            "value": "value",
+                            "filename": "filename"
+                        }
+                    },
+                    {
+                        "originEnvironmentId": "beta",
+                        "key": "brand",
+                        "value": "foo",
+                        "filename": "dataa",
+                        "cliParamMap": {
+                            "key": "key",
+                            "value": "value",
+                            "filename": "filename"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "domains": {
+        "sortBy": "asc",
+        "data": [
+            {
+                "id": "spamFinder",
+                "title": "Spam Finder"
+            },
+            {
+                "id": "moneyTracker",
+                "title": "Money Tracker"
+            }
+        ]
+    },
+    "calls": [
+        {
+            "collectionId": "services",
+            "envKeyMap": {
+                "location": "CONFIG_SERVICE_DEFAULT"
+            },
+            "command": "write_input_to_file.sh",
+            "params": "id name value filename"
+        },
+        {
+            "collectionId": "keys",
+            "envKeyMap": {
+                "location": "CONFIG_SERVICE_DEFAULT"
+            },
+            "command": "write_input_to_file.sh",
+            "params": "key value filename"
+        }
+    ]
+}

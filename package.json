@@ -1,0 +1,36 @@
+{
+  "name": "rats",
+  "version": "0.1.0",
+  "description": "",
+  "author": "Jussi Känsälä <jussi.kansala@iki.fi>",
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf node_modules",
+    "test": "jest",
+    "unit-test": "jest src/[^cli]*.test.js",
+    "flow-test": "jest src/cli.test.js",
+    "build": "rimraf lib/ && babel ./ --out-dir lib/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "start": "npm run build && node lib/index.js",
+    "watch": "babel -w src --out-dir lib/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files"
+  },
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "lodash": "^4.17.11",
+    "pty.js": "^0.3.1",
+    "term.js": "0.0.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "7.0.0",
+    "@babel/plugin-transform-destructuring": "7.4.0",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "7.4.2",
+    "@babel/runtime": "^7.4.4",
+    "babel-jest": "^24.7.1",
+    "blessed-xterm": "^1.1.20",
+    "jest": "^24.7.1",
+    "jest-json-reporter": "^1.2.2",
+    "rimraf": "^2.6.3"
+  }
+}

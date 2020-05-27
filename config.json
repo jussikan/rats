@@ -1,0 +1,141 @@
+{
+    "environments": {
+        "sortBy": "asc",
+        "data": [
+            {
+                "id": "amber",
+                "title": "amber",
+                "location": "http://localhost:8499"
+            },
+            {
+                "id": "baseline",
+                "title": "Baseline",
+                "location": "http://localhost:8500"
+            }
+        ]
+    },
+    "collectionTypes": [
+        {
+            "name": "service"
+        },
+        {
+            "name": "key"
+        }
+    ],
+    "collections": {
+        "data": [
+            {
+                "id": "services",
+                "type": "service",
+                "title": "Services",
+                "sortBy": "asc",
+                "data": [
+                    {
+                        "originEnvironmentId": "amber",
+                        "bindToDomain": true,
+                        "domainId": "aggregator",
+                        "domainName": "aggregator",
+                        "location": "10.0.0.1:8080",
+                        "cliParamMap": {
+                            "domainId": "id",
+                            "domainName": "name",
+                            "location": "value"
+                        }
+                    },
+                    {
+                        "originEnvironmentId": "baseline",
+                        "bindToDomain": true,
+                        "domainId": "aggregator",
+                        "location": "52.1.2.3:61175",
+                        "cliParamMap": {
+                            "domainId": "id",
+                            "name": "domainName",
+                            "location": "value"
+                        }
+                    },
+                    {
+                        "originEnvironmentId": "amber",
+                        "bindToDomain": true,
+                        "domainId": "address-validation",
+                        "location": "10.0.0.1:8081",
+                        "cliParamMap": {
+                            "domainId": "id",
+                            "name": "domainName",
+                            "location": "value"
+                        }
+                    },
+                    {
+                        "originEnvironmentId": "baseline",
+                        "bindToDomain": true,
+                        "domainId": "address-validation",
+                        "location": "52.1.2.3:18081",
+                        "cliParamMap": {
+                            "domainId": "id",
+                            "name": "domainName",
+                            "location": "value"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "keys",
+                "type": "key",
+                "title": "Keys",
+                "sortBy": "asc",
+                "data": [
+                    {
+                        "originEnvironmentId": "amber",
+                        "key": "https_requests_only",
+                        "value": false
+                    },
+                    {
+                        "originEnvironmentId": "amber",
+                        "key": "brand",
+                        "value": "ALL"
+                    },
+                    {
+                        "originEnvironmentId": "baseline",
+                        "key": "https_requests_only",
+                        "value": true
+                    },
+                    {
+                        "originEnvironmentId": "baseline",
+                        "key": "brand",
+                        "value": "foo"
+                    }
+                ]
+            }
+        ]
+    },
+    "domains": {
+        "sortBy": "asc",
+        "data": [
+            {
+                "id": "aggregator",
+                "title": "Aggregator"
+            },
+            {
+                "id": "address-validation",
+                "title": "Address validation"
+            }
+        ]
+    },
+    "calls": [
+        {
+            "collectionId": "services",
+            "envKeyMap": {
+                "location": "CONFIG_SERVICE_DEFAULT"
+            },
+            "command": "write_input_to_file.sh",
+            "params": "id name value"
+        },
+        {
+            "collectionId": "keys",
+            "envKeyMap": {
+                "location": "CONFIG_SERVICE_DEFAULT"
+            },
+            "command": "write_input_to_file.sh",
+            "params": "key value"
+        }
+    ]
+}
